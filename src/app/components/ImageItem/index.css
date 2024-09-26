@@ -1,0 +1,39 @@
+.image-item{
+    position: relative;
+    padding: 10px;
+    margin: 10px 12px;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    background: #ffffff;
+    overflow: hidden;
+    user-select: none;
+}
+
+.image-item:hover{
+    background: #fafafa;
+}
+
+.image-item > .image-header{
+    position: absolute;
+    right: 2px;
+    top: 2px;
+}
+
+.image-item > .image-header >div{
+    cursor: pointer;
+}
+
+.image-item > .image-content >img{
+    transition: all .2s ease-in-out;
+}
+
+.image-item > .image-footer{
+    font-style: italic;
+    text-align: center;
+    font-size: 12px;
+}
