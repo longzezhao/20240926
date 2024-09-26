@@ -1,12 +1,10 @@
 "use client"
 
 import React, {useEffect, useState} from 'react';
-import {pdfjs} from "react-pdf"
-import "./index.css"
 import ImageItem from "@/app/components/ImageItem";
 import PubSub from "pubsub-js";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+import {pdfjs} from "react-pdf"
+import "./index.css"
 
 export default function Index(props:{}){
 
@@ -22,8 +20,6 @@ export default function Index(props:{}){
     const [zoomInDisabled,setZoomInDisabled]=useState(false)
     const [zoomOutDisabled,setZoomOutDisabled]=useState(false)
 
-
-
     const onUpload= async (e:React.ChangeEvent<HTMLInputElement>)=>{
         const file=e.target.files?.[0]
         if(file){
@@ -38,6 +34,9 @@ export default function Index(props:{}){
     }
 
     useEffect(()=>{
+
+        pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+
         if (pdfFile) {
             setIsLoading(true)
             const loadPDF = async () => {
@@ -71,7 +70,7 @@ export default function Index(props:{}){
         };
 
         const renderTask = page.render(renderContext);
-        await renderTask.promise;
+        await renderTask.promise
 
         const img = new Image();
         img.src = canvas.toDataURL('image/png');
@@ -183,6 +182,7 @@ export default function Index(props:{}){
                                         {
                                             images.length && images.map((item: any, index: number) => {
                                                 return <ImageItem
+                                                        key={index}
                                                         index={index}
                                                         src={item.src}
                                                         width={width}

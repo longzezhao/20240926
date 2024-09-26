@@ -35,7 +35,7 @@ function Index(props:IProps) {
     }, []);
 
     return (
-        <div key={index} className={"image-item"} >
+        <div className={"image-item"} >
             <div className={"image-header"}>
                 <div className="absolute z-10 top-1 right-1 rounded-full p-1 hover:scale-105 hover:fill-white bg-[#ff612f] fill-white"
                      onClick={onRotate}
